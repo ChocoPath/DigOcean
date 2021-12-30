@@ -1,7 +1,7 @@
 apiVersion: tekton.dev/v1alpha1
 kind: PipelineResource
 metadata:
-  name: WorsleyQuaye
+  name: evsahara
 spec:
   type: git
   params:
