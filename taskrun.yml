@@ -17,4 +17,4 @@ spec:
     outputs:
       - name: builtImage
         resourceRef:
-          name: sinatra-hello-world-tekton-demo-image
+          name: evsahara-image
