@@ -1,12 +1,11 @@
-apiVersion: tekton.dev/v1beta1
-kind: Task
+apiVersion: tekton.dev/v1alpha1
+kind: PipelineResource
 metadata:
-  name: echo-hello-world
+  name: WorsleyQuaye
 spec:
-  steps:
-    - name: echo
-      image: ubuntu
-      command:
-        - echo
-      args:
-        - "Hello World"
+  type: git
+  params:
+    - name: revision
+      value: main
+    - name: url
+      value: https://github.com/ChocoPath/DigOcean/appname
