@@ -8,4 +8,4 @@ spec:
     - name: revision
       value: main
     - name: url
-      value: https://github.com/ChocoPath/DigOcean/appname
+      value: https://github.com/ChocoPath/DigOcean/dist
