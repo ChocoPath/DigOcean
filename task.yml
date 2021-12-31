@@ -23,7 +23,7 @@ spec:
 apiVersion: tekton.dev/v1alpha1
 kind: PipelineResource
 metadata:
-  name: evsahara-image
+  name: evsahara
 spec:
   type: image
   params:
@@ -86,8 +86,8 @@ spec:
     inputs:
       - name: docker-source
         resourceRef:
-          name: sinatra-hello-world-git
+          name: evsahara
     outputs:
       - name: builtImage
         resourceRef:
-          name: evsahara-image
+          name: evsahara
