@@ -6,5 +6,5 @@ metadata:
           tekton.dev/docker-0: https://index.docker.io # Described below
 type: kubernetes.io/basic-auth
 stringData:
-  username: DOCKER_USERNAME
-  password: DOCKER_PASSWORD
+  username: chocopath
+  password: F/WBU/Mx_;~4Kp3
