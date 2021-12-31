@@ -1,17 +1,10 @@
-
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: evsahara
-  namespace: argocd
-spec:
-  destination:
-    namespace: default
-    server: https://kubernetes.default.svc
-  project: default
-  source:
-    path: evsahara
-    repoURL: https://github.com/ChocoPath/evsahara
-    targetRevision: HEAD
-  # Sync policy
-  syncPolicy: {}
+project: default
+source:
+  repoURL: 'https://github.com/ChocoPath/evsahara'
+  path: .
+  targetRevision: HEAD
+destination:
+  server: 'https://kubernetes.default.svc'
+syncPolicy:
+  automated:
+    selfHeal: true
