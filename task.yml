@@ -1,37 +1,3 @@
----
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  name: dockerhub-service
-secrets:
-  - name: dockercreds # Create secret for your container registry
-
----
-apiVersion: tekton.dev/v1alpha1
-kind: PipelineResource
-metadata:
-  name: evsahara
-spec:
-  type: git
-  params:
-    - name: revision
-      value: main
-    - name: url
-      value: https://github.com/ChocoPath/DigOcean/dist
-
----
-apiVersion: tekton.dev/v1alpha1
-kind: PipelineResource
-metadata:
-  name: evsahara
-spec:
-  type: image
-  params:
-    - name: url
-      value: chocopath/evsahara:v1
-
----
-
 apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
@@ -46,7 +12,7 @@ spec:
       type: string
       description: |
         The build context used by Kaniko
-        (https://github.com/GoogleContainerTools/kaniko#kaniko-build-contexts)
+        (https://github.com/GoogleContainerTools/kaniko#kaniko-build-contexts)        
       default: $(resources.inputs.docker-source.path)
   resources:
     inputs:
@@ -68,26 +34,3 @@ spec:
         - --dockerfile=$(params.pathToDockerFile)
         - --destination=$(resources.outputs.builtImage.url)
         - --context=$(params.pathToContext)
-
----
-
-apiVersion: tekton.dev/v1beta1
-kind: TaskRun
-metadata:
-  name: build-docker-image-from-git-source-task-run
-spec:
-  serviceAccountName: dockerhub-service
-  taskRef:
-    name: build-docker-image-from-git-source
-  params:
-    - name: pathToDockerFile
-      value: Dockerfile
-  resources:
-    inputs:
-      - name: docker-source
-        resourceRef:
-          name: evsahara
-    outputs:
-      - name: builtImage
-        resourceRef:
-          name: evsahara:v1
