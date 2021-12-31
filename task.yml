@@ -28,7 +28,7 @@ spec:
   type: image
   params:
     - name: url
-      value: DOCKER_USERNAME/evsahara
+      value: DOCKER_USERNAME/evsahara:v1
 
 ---
 
