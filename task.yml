@@ -90,4 +90,4 @@ spec:
     outputs:
       - name: builtImage
         resourceRef:
-          name: evsahara
+          name: evsahara:v1
